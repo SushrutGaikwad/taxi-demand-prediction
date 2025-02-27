@@ -5,10 +5,12 @@ isort
 jupyterlab
 loguru
 matplotlib
+seaborn
 mkdocs
 notebook
 numpy
 pandas
+dask[dataframe]
 pip
 python-dotenv
 scikit-learn
