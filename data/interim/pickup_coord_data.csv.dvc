@@ -1,0 +1,5 @@
+outs:
+- md5: b8f672277c6b4915778c0e155bddbe84
+  size: 1259395863
+  hash: md5
+  path: pickup_coord_data.csv
