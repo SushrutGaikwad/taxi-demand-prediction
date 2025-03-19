@@ -11,6 +11,7 @@ notebook
 numpy
 pandas
 dask[dataframe]
+graphviz
 pip
 python-dotenv
 scikit-learn
