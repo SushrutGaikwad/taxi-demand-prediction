@@ -1,0 +1,10 @@
+stages:
+  data_ingestion:
+    cmd: python ./taxi_demand_prediction/dataset.py
+    deps:
+      - ./taxi_demand_prediction/dataset.py
+      - ./data/raw/yellow_tripdata_2016-01.csv
+      - ./data/raw/yellow_tripdata_2016-02.csv
+      - ./data/raw/yellow_tripdata_2016-03.csv
+    outs:
+      - ./data/interim/df_without_outliers.csv
