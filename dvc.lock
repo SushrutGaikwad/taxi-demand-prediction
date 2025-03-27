@@ -54,3 +54,23 @@ stages:
       hash: md5
       md5: b018f036d9481c012637214736b80c05
       size: 999
+  feature_engineering:
+    cmd: python ./taxi_demand_prediction/feature_engineering.py
+    deps:
+    - path: ./data/processed/resampled_data.csv
+      hash: md5
+      md5: ed4bab758479a078084a25b4a6d7dd47
+      size: 8480304
+    - path: ./taxi_demand_prediction/feature_engineering.py
+      hash: md5
+      md5: e6feae85ed0c280673387d18877fae39
+      size: 9634
+    outs:
+    - path: ./data/processed/test.csv
+      hash: md5
+      md5: 30919059b81981315715839cc59b3cc0
+      size: 5168232
+    - path: ./data/processed/train.csv
+      hash: md5
+      md5: 77791ece3a06cb77037ae53911c0cc06
+      size: 9954646

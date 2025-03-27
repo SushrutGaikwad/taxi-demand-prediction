@@ -23,3 +23,12 @@ stages:
       - ./data/processed/resampled_data.csv
       - ./models/scaler.joblib
       - ./models/mb_kmeans.joblib
+  
+  feature_engineering:
+    cmd: python ./taxi_demand_prediction/feature_engineering.py
+    deps:
+      - ./taxi_demand_prediction/feature_engineering.py
+      - ./data/processed/resampled_data.csv
+    outs:
+      - ./data/processed/train.csv
+      - ./data/processed/test.csv

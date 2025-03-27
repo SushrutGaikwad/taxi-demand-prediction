@@ -124,3 +124,15 @@ PARAMS_FILE: Path = PROJ_ROOT / "params.yaml"
 
 # Arbitrary value to replace zeros
 EPSILON_VAL: int = 10
+
+# ------------------------------------------------------------------------------
+# Constants for the Feature Engineering Pipeline
+# ------------------------------------------------------------------------------
+# File paths
+TRAIN_DATA_PATH: Path = PROCESSED_DATA_DIR / "train.csv"
+TEST_DATA_PATH: Path = PROCESSED_DATA_DIR / "test.csv"
+MAX_LAGS: int = 4
+
+# Additional constants for splitting / feature engineering
+TRAIN_MONTHS: List[int] = [1, 2]
+TEST_MONTHS: List[int] = [3]
