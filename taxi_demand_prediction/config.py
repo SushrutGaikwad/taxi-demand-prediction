@@ -85,6 +85,7 @@ READ_COLUMNS: List[str] = [
 # Columns to Parse as Datetime
 # ------------------------------------------------------------------------------
 PARSE_DATES: List[str] = ["tpep_pickup_datetime"]
+DATETIME_COL_NAME: str = PARSE_DATES[0]
 
 # ------------------------------------------------------------------------------
 # Columns to Drop after Processing
@@ -95,3 +96,31 @@ COLUMNS_TO_DROP: List[str] = [
     "dropoff_latitude",
     "fare_amount",
 ]
+
+# ------------------------------------------------------------------------------
+# Constants for the Feature Extraction Pipeline
+# ------------------------------------------------------------------------------
+# Path to the intermediate CSV after data ingestion
+DF_WITHOUT_OUTLIERS_CSV: Path = INTERIM_DATA_DIR / "df_without_outliers.csv"
+
+# Paths where the models should be saved
+SCALER_OBJ_PATH: Path = MODELS_DIR / "scaler.joblib"
+KMEANS_OBJ_PATH: Path = MODELS_DIR / "mb_kmeans.joblib"
+
+# Output CSV for final processed features
+RESAMPLED_DATA_PATH: Path = PROCESSED_DATA_DIR / "resampled_data.csv"
+
+# Default chunk size for partial reading
+DEFAULT_CHUNK_SIZE: int = 100_000
+
+# Columns for cluster input
+CLUSTER_COLS: List[str] = ["pickup_latitude", "pickup_longitude"]
+
+# Columns for location subset
+LOCATION_SUBSET = CLUSTER_COLS[::-1]
+
+# Fallback parameter file path
+PARAMS_FILE: Path = PROJ_ROOT / "params.yaml"
+
+# Arbitrary value to replace zeros
+EPSILON_VAL: int = 10
