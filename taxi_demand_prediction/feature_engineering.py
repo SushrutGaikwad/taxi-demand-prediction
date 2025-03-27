@@ -124,26 +124,28 @@ class FeatureEngineer:
         Returns:
             pd.DataFrame: DataFrame with added lag features.
         """
-        logger.info(f"Generating lag features upto {max_lags} periods...")
+        logger.info(f"Generating lag features up to {max_lags} periods...")
         try:
-            region_grp = df.groupby("region")
-            # Generate shifts for each region
-            shift_cols = [region_grp["total_pickups"].shift(i) for i in range(1, max_lags + 1)]
-            logger.info("Lag features generated successfully.")
+            region_grp = df.groupby("region")["total_pickups"]
 
-            # Combine them with original df
-            combined_df = pd.concat(shift_cols + [df], axis=1)
+            # Each shifted series gets a unique name, e.g., lag_1, lag_2...
+            lag_series_list = []
+            for i in range(1, max_lags + 1):
+                col = region_grp.shift(i)
+                col.name = f"lag_{i}"  # Assign a distinct name
+                lag_series_list.append(col)
 
-            # Some rows will contain NaN values due to shifting
-            combined_df.dropna(inplace=True)
+            # Concatenate the original df plus each named lag series
+            df_lagged = pd.concat([df] + lag_series_list, axis=1)
+
+            # Drop rows with NaNs introduced by shifting
+            df_lagged.dropna(inplace=True)
             logger.info("Dropped missing values after generating lags.")
 
-            # Rename columns for clarity
-            lag_col_map = {combined_df.columns[i]: f"lag_{i+1}" for i in range(max_lags)}
-            combined_df.rename(columns=lag_col_map, inplace=True)
-            logger.info("Lag feature columns renamed successfully.")
+            # Done: no need for a separate rename step, since each col is already named
+            logger.info("Lag features created successfully.")
+            return df_lagged
 
-            return combined_df
         except Exception as e:
             logger.exception("Error creating lag features.")
             raise RuntimeError("Failed to create lag features.") from e
@@ -183,6 +185,11 @@ class FeatureEngineer:
             train = df.loc[df["month"].isin(train_months)]
             test = df.loc[df["month"].isin(test_months)]
             logger.info(f"Training set months: {train_months}, test set months: {test_months}.")
+
+            # Remove the "month" column
+            train.drop(columns=["month"], inplace=True)
+            test.drop(columns=["month"], inplace=True)
+
             logger.info("Data split successfully.")
             return train, test
         except Exception as e:
