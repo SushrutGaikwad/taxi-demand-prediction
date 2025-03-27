@@ -16,5 +16,5 @@ pip
 python-dotenv
 scikit-learn
 tqdm
-typer
+joblib
 -e .
