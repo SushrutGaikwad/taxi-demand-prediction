@@ -32,3 +32,12 @@ stages:
     outs:
       - ./data/processed/train.csv
       - ./data/processed/test.csv
+  
+  model_training:
+    cmd: python ./taxi_demand_prediction/model_training.py
+    deps:
+      - ./taxi_demand_prediction/model_training.py
+      - ./data/processed/train.csv
+    outs:
+      - ./models/encoder.joblib
+      - ./models/model.joblib

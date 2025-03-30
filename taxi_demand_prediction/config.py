@@ -136,3 +136,12 @@ MAX_LAGS: int = 4
 # Additional constants for splitting / feature engineering
 TRAIN_MONTHS: List[int] = [1, 2]
 TEST_MONTHS: List[int] = [3]
+
+# ------------------------------------------------------------------------------
+# Constants for the Model Training Pipeline
+# ------------------------------------------------------------------------------
+
+ENCODER_PATH = MODELS_DIR / "encoder.joblib"
+MODEL_PATH = MODELS_DIR / "model.joblib"
+DROP_COLS: List[str] = ["total_pickups"]
+COLS_TO_ENCODE: List[str] = ["region", "day_of_week"]
