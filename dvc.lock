@@ -17,8 +17,8 @@ stages:
       size: 1914669757
     - path: ./taxi_demand_prediction/data_ingestion.py
       hash: md5
-      md5: 7e0f9a4e15e45bf6164b522a1a659d06
-      size: 9975
+      md5: d073cc59e0c1ac5a9ae6656dceff7fd3
+      size: 9982
     outs:
     - path: ./data/interim/df_without_outliers.csv
       hash: md5
@@ -39,7 +39,7 @@ stages:
       params.yaml:
         extract_features.ewma.alpha: 0.4
         extract_features.mini_batch_kmeans.n_clusters: 30
-        extract_features.mini_batch_kmeans.n_init: 10
+        extract_features.mini_batch_kmeans.n_init: 20
         extract_features.mini_batch_kmeans.random_state: 42
     outs:
     - path: ./data/processed/resampled_data.csv
@@ -48,7 +48,7 @@ stages:
       size: 8480304
     - path: ./models/mb_kmeans.joblib
       hash: md5
-      md5: 9d4627a31bfc2e46848da009469819c7
+      md5: 25cc43a9037d5824380539474befe716
       size: 143771
     - path: ./models/scaler.joblib
       hash: md5
