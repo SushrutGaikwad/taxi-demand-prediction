@@ -94,3 +94,31 @@ stages:
       hash: md5
       md5: 8c4060584d9584ed40412c109e9b824f
       size: 2345
+  model_evaluation:
+    cmd: python ./taxi_demand_prediction/model_evaluation.py
+    deps:
+    - path: ./data/processed/test.csv
+      hash: md5
+      md5: 06ade3860623df46e24dacda6dce2eb8
+      size: 4989674
+    - path: ./data/processed/train.csv
+      hash: md5
+      md5: 3a6d9a1a1f28a77c13cf948a4cd1ba75
+      size: 9609288
+    - path: ./models/encoder.joblib
+      hash: md5
+      md5: 163070181639c1acb6cbd99a9bfd062d
+      size: 3493
+    - path: ./models/model.joblib
+      hash: md5
+      md5: 8c4060584d9584ed40412c109e9b824f
+      size: 2345
+    - path: ./taxi_demand_prediction/model_evaluation.py
+      hash: md5
+      md5: 598398f0ae666240f54a66b713a7ff4e
+      size: 11415
+    outs:
+    - path: ./run_information.json
+      hash: md5
+      md5: ba4a437833f28dcb4554311b84cd5d08
+      size: 185

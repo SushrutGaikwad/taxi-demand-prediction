@@ -41,3 +41,14 @@ stages:
     outs:
       - ./models/encoder.joblib
       - ./models/model.joblib
+  
+  model_evaluation:
+    cmd: python ./taxi_demand_prediction/model_evaluation.py
+    deps:
+      - ./taxi_demand_prediction/model_evaluation.py
+      - ./models/encoder.joblib
+      - ./models/model.joblib
+      - ./data/processed/train.csv
+      - ./data/processed/test.csv
+    outs:
+      - ./run_information.json

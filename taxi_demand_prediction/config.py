@@ -145,3 +145,21 @@ ENCODER_PATH = MODELS_DIR / "encoder.joblib"
 MODEL_PATH = MODELS_DIR / "model.joblib"
 DROP_COLS: List[str] = ["total_pickups"]
 COLS_TO_ENCODE: List[str] = ["region", "day_of_week"]
+
+# ------------------------------------------------------------------------------
+# Constants for the Model Evaluation Pipeline
+# ------------------------------------------------------------------------------
+
+TRAIN_DATA_PATH: Path = TRAIN_DATA_PATH
+TEST_DATA_PATH: Path = TEST_DATA_PATH
+
+ENCODER_PATH: Path = ENCODER_PATH
+MODEL_PATH: Path = MODEL_PATH
+
+RUN_INFO_PATH: Path = PROJ_ROOT / "run_information.json"
+
+# MLFlow / DagsHub configuration
+DAGSHUB_REPO_OWNER: str = "SushrutGaikwad"
+DAGSHUB_REPO_NAME: str = "taxi-demand-prediction"
+MLFLOW_TRACKING_URI: str = f"https://dagshub.com/{DAGSHUB_REPO_OWNER}/{DAGSHUB_REPO_NAME}.mlflow"
+MLFLOW_EXPERIMENT_NAME: str = "DVC Pipeline"
