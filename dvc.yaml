@@ -1,8 +1,8 @@
 stages:
   data_ingestion:
-    cmd: python ./taxi_demand_prediction/dataset.py
+    cmd: python ./taxi_demand_prediction/data_ingestion.py
     deps:
-      - ./taxi_demand_prediction/dataset.py
+      - ./taxi_demand_prediction/data_ingestion.py
       - ./data/raw/yellow_tripdata_2016-01.csv
       - ./data/raw/yellow_tripdata_2016-02.csv
       - ./data/raw/yellow_tripdata_2016-03.csv
