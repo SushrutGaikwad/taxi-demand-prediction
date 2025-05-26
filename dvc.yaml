@@ -52,3 +52,9 @@ stages:
       - ./data/processed/test.csv
     outs:
       - ./run_information.json
+  
+  model_registration:
+    cmd: python ./taxi_demand_prediction/model_registration.py
+    deps:
+      - ./taxi_demand_prediction/model_evaluation.py
+      - ./run_information.json

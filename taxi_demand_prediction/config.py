@@ -163,3 +163,15 @@ DAGSHUB_REPO_OWNER: str = "SushrutGaikwad"
 DAGSHUB_REPO_NAME: str = "taxi-demand-prediction"
 MLFLOW_TRACKING_URI: str = f"https://dagshub.com/{DAGSHUB_REPO_OWNER}/{DAGSHUB_REPO_NAME}.mlflow"
 MLFLOW_EXPERIMENT_NAME: str = "DVC Pipeline"
+
+# ------------------------------------------------------------------------------
+# Constants for the Model Registration Pipeline
+# ------------------------------------------------------------------------------
+
+DAGSHUB_REPO_OWNER: str = DAGSHUB_REPO_OWNER
+DAGSHUB_REPO_NAME: str = DAGSHUB_REPO_NAME
+MLFLOW_TRACKING_URI: str = MLFLOW_TRACKING_URI
+
+RUN_INFO_PATH: Path = RUN_INFO_PATH
+
+REGISTERED_MODEL_NAME: str = "taxi_demand_prediction_model"

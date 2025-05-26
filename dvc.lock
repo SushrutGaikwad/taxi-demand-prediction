@@ -122,3 +122,14 @@ stages:
       hash: md5
       md5: ba4a437833f28dcb4554311b84cd5d08
       size: 185
+  model_registration:
+    cmd: python ./taxi_demand_prediction/model_registration.py
+    deps:
+    - path: ./run_information.json
+      hash: md5
+      md5: ba4a437833f28dcb4554311b84cd5d08
+      size: 185
+    - path: ./taxi_demand_prediction/model_evaluation.py
+      hash: md5
+      md5: 598398f0ae666240f54a66b713a7ff4e
+      size: 11415
