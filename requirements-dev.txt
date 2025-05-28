@@ -8,4 +8,6 @@ python-dotenv
 pytest
 scikit-learn
 joblib
+loguru
+tqdm
 -e .
