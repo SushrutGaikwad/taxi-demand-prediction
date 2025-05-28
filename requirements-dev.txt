@@ -7,3 +7,4 @@ dvc[s3]
 pytest
 scikit-learn
 joblib
+-e .
