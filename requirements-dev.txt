@@ -4,6 +4,7 @@ mlflow
 dagshub
 dvc
 dvc[s3]
+python-dotenv
 pytest
 scikit-learn
 joblib
