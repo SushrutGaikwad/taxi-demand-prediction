@@ -1,14 +1,25 @@
 import joblib
+import dagshub
+import mlflow
 import pandas as pd
 import streamlit as st
-from pathlib import Path
 import datetime as dt
+
+from pathlib import Path
 from sklearn.pipeline import Pipeline
 from sklearn import set_config
 from time import sleep
 
-
 set_config(transform_output="pandas")
+
+# DagsHub and MLFlow
+dagshub.init(
+    repo_owner="SushrutGaikwad",
+    repo_name="taxi-demand-prediction",
+    mlflow=True,
+)
+URI = "https://dagshub.com/SushrutGaikwad/taxi-demand-prediction.mlflow"
+mlflow.set_tracking_uri(URI)
 
 # Paths
 ROOT_PATH = Path(__file__).parent
@@ -20,13 +31,17 @@ MODELS_DIR_PATH = ROOT_PATH / "models"
 KMEANS_OBJ_PATH = MODELS_DIR_PATH / "mb_kmeans.joblib"
 SCALER_OBJ_PATH = MODELS_DIR_PATH / "scaler.joblib"
 ENCODER_PATH = MODELS_DIR_PATH / "encoder.joblib"
-MODEL_PATH = MODELS_DIR_PATH / "model.joblib"
 
 # Loading the objects
 scaler = joblib.load(SCALER_OBJ_PATH)
 encoder = joblib.load(ENCODER_PATH)
-model = joblib.load(MODEL_PATH)
 kmeans = joblib.load(KMEANS_OBJ_PATH)
+
+# Loading the production model
+REGISTERED_MODEL_NAME: str = "taxi_demand_prediction_model"
+MODEL_STAGE: str = "Production"
+MODEL_PATH: Path = Path(f"models:/{REGISTERED_MODEL_NAME}/{MODEL_STAGE}")
+model = mlflow.sklearn.load_model(MODEL_PATH)
 
 # Loading the data to plot
 plot_df = pd.read_csv(PLOT_DATA_PATH)
