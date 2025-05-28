@@ -17,4 +17,9 @@ python-dotenv
 scikit-learn
 tqdm
 joblib
+dvc
+dvc[s3]
+mlflow
+dagshub
+pytest
 -e .
