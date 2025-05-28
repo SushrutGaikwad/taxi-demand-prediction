@@ -39,7 +39,7 @@ stages:
       params.yaml:
         extract_features.ewma.alpha: 0.4
         extract_features.mini_batch_kmeans.n_clusters: 30
-        extract_features.mini_batch_kmeans.n_init: 25
+        extract_features.mini_batch_kmeans.n_init: 20
         extract_features.mini_batch_kmeans.random_state: 42
     outs:
     - path: ./data/processed/resampled_data.csv
@@ -48,7 +48,7 @@ stages:
       size: 8480304
     - path: ./models/mb_kmeans.joblib
       hash: md5
-      md5: 341c411f2b7e16be52c6332d40ff665a
+      md5: 25cc43a9037d5824380539474befe716
       size: 143771
     - path: ./models/scaler.joblib
       hash: md5
